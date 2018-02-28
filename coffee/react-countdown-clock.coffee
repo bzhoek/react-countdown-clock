@@ -96,6 +96,9 @@ ReactCountdownClock = CreateReactClass
       @refs.component.removeEventListener 'click', @props.onClick
 
   _tick: ->
+    if @props.tick
+      @props.tick(@_seconds)
+
     start = Date.now()
     @_timeoutIds.push(setTimeout ( =>
       duration = (Date.now() - start) / 1000
